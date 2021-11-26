@@ -1,0 +1,143 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: search_location
+  examples: |
+    - the location of the 
+    - the nearest location
+    - the cloest location
+    - search location
+
+- intent: cityname
+  examples: |
+    - [nanjing](city_name)
+    - [shanghai](city_name)
+    - [beijing](city_name)
+
+- intent: return_goods
+  examples: |
+    - I want to return the goods
+    - please return the goods
+    - how can i return the goods
+    - sorry, i do not want the produce
+    - I have the better one
+    - the Astral's physical is not fit me
+
+- intent: return_order_num
+  examples: |
+    - [123456](order_number)
+    - My order is [123456](order_number)
+    - here is my order number:[123456](order_number)
+  
+- regex: order_number
+  examples:
+    -\d{6}
+
+- intent: search_basic
+  examples: |
+    - the basic information
+    - information about Astral's physical stores
+    - information about
+    - I want to know the the basic information about Astral's physical stores
+
+- intent: search_hours
+  examples: |
+    - business hours
+    - opening hours
+    - I want to know the business hours about Astral's physical stores
+    - I want to know the opening hours about Astral's physical stores
+    - What time does the store open
+- intent: artificial
+  examples: |
+    - artificial
+

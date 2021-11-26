@@ -1,0 +1,79 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: search location
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: search_location
+  - action: utter_ask_city 
+  - intent: cityname
+    entities:
+    - city_name: "nanjing"   
+  - slot_was_set:
+    - city_name: "nanjing"    
+  - action: action_search_location
+  - action: utter_search_location            # user message with entities
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: return order
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: return_goods
+  - action: utter_ask_order_number 
+  - intent: return_order_num
+    entities:
+    - order_number: "000001"   
+  - slot_was_set:
+    - order_number: "000001"    
+  - action: action_return_goods_feedback
+  - action: utter_ask_order_time         # user message with entities
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: ask hour
+  steps:
+  - intent: search_hours
+  - action: utter_hours
+- story: ask basic inform
+  steps:
+  - intent: search_basic
+  - action: utter_search_basic
+- story: artificial
+  steps:
+  - intent: artificial
+  - action: utter_artificial
+
+ 
+  ##greet+location
+

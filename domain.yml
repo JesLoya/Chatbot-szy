@@ -1,0 +1,101 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- ask_city:
+    use_entities: true
+- search_location:
+    use_entities: true
+- return_goods:
+    use_entities: true
+- return_order_num:
+    use_entities: true
+- cityname:
+    use_entities: true
+- search_basic:
+    use_entities: true
+- search_hours:
+    use_entities: true
+- artificial:
+    use_entities: true
+entities:
+- city_name
+- order_number
+slots:
+  location:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  city_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  order_number:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  order_time:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_search_location:
+  - text: In your city, our physical store is located in {city_name}{location}.
+  utter_hours:
+  - text: Astral’s physical store is open from 8 a.m. to 11 p.m. (from 8 a.m. to 5 p.m. on holidays and weekends.
+  utter_search_basic:
+  - text: Please allow me to give you the basic information about Astral's physical stores. Astral is a desktop and notebook computer manufacturer that mainly sells its products in Asia.
+  utter_artificial:
+  - text: I'm sorry for not being able to satisfy you. I will switch to artificial processing for you.
+  utter_ask_order_number:
+  - text: Please enter the order number of the product you want to return.
+  utter_ask_order_time:
+  - text: Your goods has arrived {order_time} day.
+  utter_ask_city:
+  - buttons:
+    - payload: /cityname{{"city_name":"nanjing"}}
+      title: nanjing
+    - payload: /cityname{{"city_name":"beijing"}}
+      title: beijing
+    - payload: /cityname{{"city_name":"shanghai"}}
+      title: shanghai
+    text: What is your city, please?.
+actions:
+- action_search_location
+- action_return_goods_feedback
+forms: {}
+e2e_actions: []
